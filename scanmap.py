@@ -30,3 +30,5 @@ for dict in results:
         print ('[+]SERVICE:', dict['service']['name'], '| VERSION:'+ dict['service']['version'])
     except:
         print ('[+]SERVICE:', dict['service']['name'])
+        
+print('MAIN PORTS: 20, 21, 22, 23, 25(587), 53, 80, 443, 8080, 43')
