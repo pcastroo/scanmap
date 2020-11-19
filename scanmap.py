@@ -1,14 +1,14 @@
 import os
+import sys
 import nmap3
 nm = nmap3.Nmap()
 
-target = input("TARGET: ") #input the target
-ping = os.system("ping -c 1 " + target) #server up or down
+ping = os.system("ping -c 1 " + sys.argv[1]) #server up or down
 
-results = nm.nmap_version_detection(target) #nmap -sV dict
+results = nm.nmap_version_detection(sys.argv[1]) #nmap -sV dict
 
 print ('####################\n')
-print ('[+]HOST : ' + target)
+print ('[+]HOST: ' + sys.argv[1])
 
 #server up or down
 if ping == 0:
@@ -30,5 +30,7 @@ for dict in results:
         print ('[+]SERVICE:', dict['service']['name'], '| VERSION:'+ dict['service']['version'])
     except:
         print ('[+]SERVICE:', dict['service']['name'])
-        
+
 print('MAIN PORTS: 20, 21, 22, 23, 25(587), 53, 80, 443, 8080, 43')
+    
+    
