@@ -5,10 +5,10 @@ Its a script that **scan** a target, and returns all the results, like the **ope
 
 ## HOW TO USE:
 Firstly, you'll have to install the module [python3-nmap](https://pypi.org/project/python3-nmap/), if you already have it installed you can go ahead. If you don't have it installed, you'll have to enter this on terminal:<br>
-`python3 pip install python3-nmap `<br>
+`python -m pip install python3-nmap `<br>
 And after that is simple, just clone the repository and open the *nmapscan.py* with python, and put the target as argument. Like this:<br>
-`python3 scanmap.py (target)`<br>
->*Example:* `python3 scanmap.py 200.71.70.74`<br>
+`python3 scanmap.py -t (target)`<br>
+>*Example:* `python3 scanmap.py -t 200.71.70.74`<br>
 
 Thereafter enter your target and wait. You'll see the output with the data. :D
 

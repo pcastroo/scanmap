@@ -1,17 +1,24 @@
+
+    
 import os
+import optparse
 import sys
 import nmap3
 import time
 nm = nmap3.Nmap()
+parse = optparse.OptionParser()
 
-ping = os.system("ping -c 1 " + sys.argv[1]) #server up or down
+parse.add_option("-?", action="help",help="show the options")
+parse.add_option("-t", help="the target", dest="target")
 
-results = nm.nmap_version_detection(sys.argv[1]) #nmap -sV dict
+(options, args) = parse.parse_args()
+
+ping = os.system("ping -c 1 " + options.target) #server up or down
 
 os.system("clear")
 os.system("figlet ScaNmap")
 
-results = nm.nmap_version_detection(sys.argv[1]) #nmap -sV dict
+results = nm.nmap_version_detection(options.target) #nmap -sV dict
 
 print ("[                    ] 0% ")
 time.sleep(5)
@@ -25,14 +32,14 @@ print ("[====================] 100%")
 time.sleep(3)
 
 print ('\n####################\n')
-print ('[+]HOST: ' + sys.argv[1])
-
+print ('[+]HOST: ' + options.target)
 #server up or down
 if ping == 0:
     print ('[+]STATE : UP')
     
 else:
     print ('[+]STATE : DOWN')
+    sys.exit()
     
 #search ports and services
 for dict in results:
@@ -49,6 +56,7 @@ for dict in results:
         print ('[+]SERVICE:', dict['service']['name'])
 
 print('MAIN PORTS: 20, 21, 22, 23, 25(587), 53, 80, 443, 8080, 43')
+print ('\n####################\n')
     
     
     
